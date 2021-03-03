@@ -8,9 +8,9 @@ output:
 ---
 
 ```{r install-packages, message = FALSE, warning = FALSE}
-#install.packages("tidyverse")
-#install.packages("dplyr")
-#install.packages("ggplot2")
+install.packages("tidyverse")
+install.packages("dplyr")
+install.packages("ggplot2")
 ```
 
 ```{r load-packages, eval = TRUE, echo = TRUE, message = FALSE, warning = FALSE}
@@ -36,7 +36,7 @@ mammal <- read_csv("data/mammal-sleep.csv")
 **What are the dimensions of `mammal()`? How many rows and columns does it have?**
 
 ```{r data-dimensions}
-
+glimpse(mammal)
 ```
 
 Type `head(mammal)` in the Console window. What does this do? How about `tail(mammal)`?
@@ -49,7 +49,7 @@ You've learned the assignment operator, so it's time to introduce the piping ope
 
 ```{r}
 mammal %>%
-  filter(order == "Primates") %>%
+  filter(order == "Rodentia") %>%
   select(name, sleep_total) %>%
   arrange(desc(sleep_total)) %>%
   head(5)
@@ -64,7 +64,7 @@ R can make logical comparisons like the one in `filter()` above. Use `!=` to mea
 If you want to look at the contents of one column (or vector) in the data, you can subset a dataframe like so:
 
 ```{r}
-mammal$sleep_total
+mean(mammal$sleep_total)
 ```
 
 **Try finding the average total amount of sleep of mammals in the data on your own.**

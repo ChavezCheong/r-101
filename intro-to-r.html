@@ -252,23 +252,29 @@ code span.ot { color: #007020; }
 <h3>Load data</h3>
 <p>Today we’ll be using a dataset about mammalian sleep that comes built in to ggplot2.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>msleep</span></code></pre></div>
-<pre><code>## # A tibble: 83 x 11
-##    name  genus vore  order conservation sleep_total sleep_rem sleep_cycle
-##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-##  1 Chee~ Acin~ carni Carn~ lc                  12.1      NA        NA    
-##  2 Owl ~ Aotus omni  Prim~ &lt;NA&gt;                17         1.8      NA    
-##  3 Moun~ Aplo~ herbi Rode~ nt                  14.4       2.4      NA    
-##  4 Grea~ Blar~ omni  Sori~ lc                  14.9       2.3       0.133
-##  5 Cow   Bos   herbi Arti~ domesticated         4         0.7       0.667
-##  6 Thre~ Brad~ herbi Pilo~ &lt;NA&gt;                14.4       2.2       0.767
-##  7 Nort~ Call~ carni Carn~ vu                   8.7       1.4       0.383
-##  8 Vesp~ Calo~ &lt;NA&gt;  Rode~ &lt;NA&gt;                 7        NA        NA    
-##  9 Dog   Canis carni Carn~ domesticated        10.1       2.9       0.333
-## 10 Roe ~ Capr~ herbi Arti~ lc                   3        NA        NA    
-## # ... with 73 more rows, and 3 more variables: awake &lt;dbl&gt;, brainwt &lt;dbl&gt;,
-## #   bodywt &lt;dbl&gt;</code></pre>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
+<pre><code>## [38;5;246m# A tibble: 83 x 11[39m
+##    name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##    [3m[38;5;246m&lt;chr&gt;[39m[23m [3m[38;5;246m&lt;chr&gt;[39m[23m [3m[38;5;246m&lt;chr&gt;[39m[23m [3m[38;5;246m&lt;chr&gt;[39m[23m [3m[38;5;246m&lt;chr&gt;[39m[23m              [3m[38;5;246m&lt;dbl&gt;[39m[23m     [3m[38;5;246m&lt;dbl&gt;[39m[23m       [3m[38;5;246m&lt;dbl&gt;[39m[23m [3m[38;5;246m&lt;dbl&gt;[39m[23m
+## [38;5;250m 1[39m Chee~ Acin~ carni Carn~ lc                  12.1      [31mNA[39m        [31mNA[39m      11.9
+## [38;5;250m 2[39m Owl ~ Aotus omni  Prim~ [31mNA[39m                  17         1.8      [31mNA[39m       7  
+## [38;5;250m 3[39m Moun~ Aplo~ herbi Rode~ nt                  14.4       2.4      [31mNA[39m       9.6
+## [38;5;250m 4[39m Grea~ Blar~ omni  Sori~ lc                  14.9       2.3       0.133   9.1
+## [38;5;250m 5[39m Cow   Bos   herbi Arti~ domesticated         4         0.7       0.667  20  
+## [38;5;250m 6[39m Thre~ Brad~ herbi Pilo~ [31mNA[39m                  14.4       2.2       0.767   9.6
+## [38;5;250m 7[39m Nort~ Call~ carni Carn~ vu                   8.7       1.4       0.383  15.3
+## [38;5;250m 8[39m Vesp~ Calo~ [31mNA[39m    Rode~ [31mNA[39m                   7        [31mNA[39m        [31mNA[39m      17  
+## [38;5;250m 9[39m Dog   Canis carni Carn~ domesticated        10.1       2.9       0.333  13.9
+## [38;5;250m10[39m Roe ~ Capr~ herbi Arti~ lc                   3        [31mNA[39m        [31mNA[39m      21  
+## [38;5;246m# ... with 73 more rows, and 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;[39m</code></pre>
 <p>You usually won’t be working with data that’s already built into R, so for practice we’re going to read in the same <code>msleep</code> data as a CSV file.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/mammal-sleep.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/mammal-sleep.csv&quot;</span>)</span></code></pre></div>
 <p>(This is the first time you’re seeing the assignment operator <code>&lt;-</code>. We’ll use this a lot!)</p>
 <p>I created mammal-sleep.csv using the <code>write_csv()</code> function, as in <code>write_csv(msleep, &quot;data/mammal-sleep.csv)</code>. You can use write_csv to save data you’ve modified/filtered/created.</p>
 <p>Other functions and packages exist for reading other types of data files (for example, the <code>readxlsx</code> package for loading Excel files or <code>read_table()</code> and <code>read_delim()</code>).</p>
@@ -281,9 +287,9 @@ code span.ot { color: #007020; }
 <li><code>?round</code></li>
 </ul>
 <p>Let’s try using <code>sd()</code> to compute the standard deviation of this list of values: 3, 7, 9, 82.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sd(3, 7, 9, 82)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sd(3, 7, 9, 82)</span></span></code></pre></div>
 <p>This gives us an error – let’s refer back to the help page for <code>sd()</code> and try again.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">82</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">82</span>))</span></code></pre></div>
 <pre><code>## [1] 37.91548</code></pre>
 <p>Use <code>c(item1, item2, item3...)</code> to create lists.</p>
 <p>You can also use the Console to find information about packages or datasets they contain, like the <code>msleep</code> data we are working with now. Type <code>?msleep</code> in the Console.</p>
@@ -306,20 +312,20 @@ code span.ot { color: #007020; }
 <div id="exercise-1" class="section level3">
 <h3>Exercise 1</h3>
 <p><strong>What are the dimensions of <code>mammal()</code>? How many rows and columns does it have?</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mammal)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mammal)</span></code></pre></div>
 <pre><code>## Observations: 83
 ## Variables: 11
-## $ name         &lt;chr&gt; &quot;Cheetah&quot;, &quot;Owl monkey&quot;, &quot;Mountain beaver&quot;, &quot;Grea...
-## $ genus        &lt;chr&gt; &quot;Acinonyx&quot;, &quot;Aotus&quot;, &quot;Aplodontia&quot;, &quot;Blarina&quot;, &quot;Bo...
-## $ vore         &lt;chr&gt; &quot;carni&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;herbi...
-## $ order        &lt;chr&gt; &quot;Carnivora&quot;, &quot;Primates&quot;, &quot;Rodentia&quot;, &quot;Soricomorph...
-## $ conservation &lt;chr&gt; &quot;lc&quot;, NA, &quot;nt&quot;, &quot;lc&quot;, &quot;domesticated&quot;, NA, &quot;vu&quot;, N...
-## $ sleep_total  &lt;dbl&gt; 12.1, 17.0, 14.4, 14.9, 4.0, 14.4, 8.7, 7.0, 10.1...
-## $ sleep_rem    &lt;dbl&gt; NA, 1.8, 2.4, 2.3, 0.7, 2.2, 1.4, NA, 2.9, NA, 0....
-## $ sleep_cycle  &lt;dbl&gt; NA, NA, NA, 0.1333333, 0.6666667, 0.7666667, 0.38...
-## $ awake        &lt;dbl&gt; 11.9, 7.0, 9.6, 9.1, 20.0, 9.6, 15.3, 17.0, 13.9,...
-## $ brainwt      &lt;dbl&gt; NA, 0.01550, NA, 0.00029, 0.42300, NA, NA, NA, 0....
-## $ bodywt       &lt;dbl&gt; 50.000, 0.480, 1.350, 0.019, 600.000, 3.850, 20.4...</code></pre>
+## $ name         [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Cheetah&quot;, &quot;Owl monkey&quot;, &quot;Mountain beaver&quot;, &quot;Greater s...
+## $ genus        [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Acinonyx&quot;, &quot;Aotus&quot;, &quot;Aplodontia&quot;, &quot;Blarina&quot;, &quot;Bos&quot;, &quot;...
+## $ vore         [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;carni&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;omni&quot;, &quot;herbi&quot;, &quot;herbi&quot;, &quot;c...
+## $ order        [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;Carnivora&quot;, &quot;Primates&quot;, &quot;Rodentia&quot;, &quot;Soricomorpha&quot;, &quot;...
+## $ conservation [3m[38;5;246m&lt;chr&gt;[39m[23m &quot;lc&quot;, NA, &quot;nt&quot;, &quot;lc&quot;, &quot;domesticated&quot;, NA, &quot;vu&quot;, NA, &quot;d...
+## $ sleep_total  [3m[38;5;246m&lt;dbl&gt;[39m[23m 12.1, 17.0, 14.4, 14.9, 4.0, 14.4, 8.7, 7.0, 10.1, 3.0...
+## $ sleep_rem    [3m[38;5;246m&lt;dbl&gt;[39m[23m NA, 1.8, 2.4, 2.3, 0.7, 2.2, 1.4, NA, 2.9, NA, 0.6, 0....
+## $ sleep_cycle  [3m[38;5;246m&lt;dbl&gt;[39m[23m NA, NA, NA, 0.1333333, 0.6666667, 0.7666667, 0.3833333...
+## $ awake        [3m[38;5;246m&lt;dbl&gt;[39m[23m 11.9, 7.0, 9.6, 9.1, 20.0, 9.6, 15.3, 17.0, 13.9, 21.0...
+## $ brainwt      [3m[38;5;246m&lt;dbl&gt;[39m[23m NA, 0.01550, NA, 0.00029, 0.42300, NA, NA, NA, 0.07000...
+## $ bodywt       [3m[38;5;246m&lt;dbl&gt;[39m[23m 50.000, 0.480, 1.350, 0.019, 600.000, 3.850, 20.490, 0...</code></pre>
 <p>You can also use <code>dim()</code> or look at your Environment pane to answer this question. Sometimes it helps to browse your data to get a feel for it when starting a project, try clicking the table icon in the <code>mammal</code> row in the Environment pane or type <code>View(mammal)</code> in your Console.</p>
 <p>Type <code>head(mammal)</code> in the Console window. What does this do? How about <code>tail(mammal)</code>?</p>
 <p><em>Tip:</em> Use the arrow keys to scroll up or down through your previous commands in the Console and save a bit of typing.</p>
@@ -328,104 +334,125 @@ code span.ot { color: #007020; }
 <h3>Exercise 2</h3>
 <p>Let’s do some exploratory data analysis and look at summary statistics!</p>
 <p>You’ve learned the assignment operator, so it’s time to introduce the piping operator <code>%&gt;%</code>. This is used to pass the output of one line to the next, like in the example below.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(order <span class="sc">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sleep_total) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sleep_total)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 2
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(order <span class="sc">==</span> <span class="st">&quot;Primates&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, sleep_total) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sleep_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
+<pre><code>## [38;5;246m# A tibble: 5 x 2[39m
 ##   name         sleep_total
-##   &lt;chr&gt;              &lt;dbl&gt;
-## 1 Owl monkey          17  
-## 2 Slow loris          11  
-## 3 Potto               11  
-## 4 Patas monkey        10.9
-## 5 Macaque             10.1</code></pre>
+##   [3m[38;5;246m&lt;chr&gt;[39m[23m              [3m[38;5;246m&lt;dbl&gt;[39m[23m
+## [38;5;250m1[39m Owl monkey          17  
+## [38;5;250m2[39m Slow loris          11  
+## [38;5;250m3[39m Potto               11  
+## [38;5;250m4[39m Patas monkey        10.9
+## [38;5;250m5[39m Macaque             10.1</code></pre>
 <p><strong>Try this on your own – see if you can find the mammal of class Rodentia that spends the least time awake.</strong></p>
 <p>R can make logical comparisons like the one in <code>filter()</code> above. Use <code>!=</code> to mean ‘does not equal’. You can also use operators like <code>&gt;</code> or <code>&lt;=</code> to mean ‘is greater than’ and ‘is less than or equal to’. Also <code>is.na()</code> and <code>!is.na()</code>. Remember to use <code>==</code> for equality, not <code>=</code>. Use <code>|</code> as “or” and <code>&amp;</code> as “and” for multiple conditions. (Also <code>%in%</code>!)</p>
 </div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
 <p>If you want to look at the contents of one column (or vector) in the data, you can subset a dataframe like so:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mammal<span class="sc">$</span>sleep_total</span></code></pre></div>
-<pre><code>##  [1] 12.1 17.0 14.4 14.9  4.0 14.4  8.7  7.0 10.1  3.0  5.3  9.4 10.0 12.5
-## [15] 10.3  8.3  9.1 17.4  5.3 18.0  3.9 19.7  2.9  3.1 10.1 10.9 14.9 12.5
-## [29]  9.8  1.9  2.7  6.2  6.3  8.0  9.5  3.3 19.4 10.1 14.2 14.3 12.8 12.5
-## [43] 19.9 14.6 11.0  7.7 14.5  8.4  3.8  9.7 15.8 10.4 13.5  9.4 10.3 11.0
-## [57] 11.5 13.7  3.5  5.6 11.1 18.1  5.4 13.0  8.7  9.6  8.4 11.3 10.6 16.6
-## [71] 13.8 15.9 12.8  9.1  8.6 15.8  4.4 15.6  8.9  5.2  6.3 12.5  9.8</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mammal<span class="sc">$</span>sleep_total</span></code></pre></div>
+<pre><code>##  [1] 12.1 17.0 14.4 14.9  4.0 14.4  8.7  7.0 10.1  3.0  5.3  9.4 10.0 12.5 10.3
+## [16]  8.3  9.1 17.4  5.3 18.0  3.9 19.7  2.9  3.1 10.1 10.9 14.9 12.5  9.8  1.9
+## [31]  2.7  6.2  6.3  8.0  9.5  3.3 19.4 10.1 14.2 14.3 12.8 12.5 19.9 14.6 11.0
+## [46]  7.7 14.5  8.4  3.8  9.7 15.8 10.4 13.5  9.4 10.3 11.0 11.5 13.7  3.5  5.6
+## [61] 11.1 18.1  5.4 13.0  8.7  9.6  8.4 11.3 10.6 16.6 13.8 15.9 12.8  9.1  8.6
+## [76] 15.8  4.4 15.6  8.9  5.2  6.3 12.5  9.8</code></pre>
 <p><strong>Try finding the average total amount of sleep of mammals in the data on your own.</strong></p>
 <p>The <code>summary()</code> function can provide good information.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mammal)</span></code></pre></div>
-<pre><code>##      name              genus               vore          
-##  Length:83          Length:83          Length:83         
-##  Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character  
-##                                                          
-##                                                          
-##                                                          
-##                                                          
-##     order           conservation        sleep_total      sleep_rem    
-##  Length:83          Length:83          Min.   : 1.90   Min.   :0.100  
-##  Class :character   Class :character   1st Qu.: 7.85   1st Qu.:0.900  
-##  Mode  :character   Mode  :character   Median :10.10   Median :1.500  
-##                                        Mean   :10.43   Mean   :1.875  
-##                                        3rd Qu.:13.75   3rd Qu.:2.400  
-##                                        Max.   :19.90   Max.   :6.600  
-##                                                        NA&#39;s   :22     
-##   sleep_cycle         awake          brainwt            bodywt        
-##  Min.   :0.1167   Min.   : 4.10   Min.   :0.00014   Min.   :   0.005  
-##  1st Qu.:0.1833   1st Qu.:10.25   1st Qu.:0.00290   1st Qu.:   0.174  
-##  Median :0.3333   Median :13.90   Median :0.01240   Median :   1.670  
-##  Mean   :0.4396   Mean   :13.57   Mean   :0.28158   Mean   : 166.136  
-##  3rd Qu.:0.5792   3rd Qu.:16.15   3rd Qu.:0.12550   3rd Qu.:  41.750  
-##  Max.   :1.5000   Max.   :22.10   Max.   :5.71200   Max.   :6654.000  
-##  NA&#39;s   :51                       NA&#39;s   :27</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mammal)</span></code></pre></div>
+<pre><code>##      name              genus               vore              order          
+##  Length:83          Length:83          Length:83          Length:83         
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##                                                                             
+##  conservation        sleep_total      sleep_rem      sleep_cycle    
+##  Length:83          Min.   : 1.90   Min.   :0.100   Min.   :0.1167  
+##  Class :character   1st Qu.: 7.85   1st Qu.:0.900   1st Qu.:0.1833  
+##  Mode  :character   Median :10.10   Median :1.500   Median :0.3333  
+##                     Mean   :10.43   Mean   :1.875   Mean   :0.4396  
+##                     3rd Qu.:13.75   3rd Qu.:2.400   3rd Qu.:0.5792  
+##                     Max.   :19.90   Max.   :6.600   Max.   :1.5000  
+##                                     NA&#39;s   :22      NA&#39;s   :51      
+##      awake          brainwt            bodywt        
+##  Min.   : 4.10   Min.   :0.00014   Min.   :   0.005  
+##  1st Qu.:10.25   1st Qu.:0.00290   1st Qu.:   0.174  
+##  Median :13.90   Median :0.01240   Median :   1.670  
+##  Mean   :13.57   Mean   :0.28158   Mean   : 166.136  
+##  3rd Qu.:16.15   3rd Qu.:0.12550   3rd Qu.:  41.750  
+##  Max.   :22.10   Max.   :5.71200   Max.   :6654.000  
+##                  NA&#39;s   :27</code></pre>
 <p>Does it make sense to use the summary function on the variable <code>order</code> in our data?</p>
 <p>Reminder: Now you’ve made a few more edits to your R Markdown files, try committing your changes!</p>
 </div>
 <div id="exercise-4" class="section level3">
 <h3>Exercise 4</h3>
 <p>The <code>mutate</code> function allows you to create new variables. Let’s create a variable with body weight in pounds instead of kilograms.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> mammal <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bodywt_lbs =</span> <span class="fu">round</span>(bodywt <span class="sc">*</span> <span class="fl">2.205</span>, <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> mammal <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bodywt_lbs =</span> <span class="fu">round</span>(bodywt <span class="sc">*</span> <span class="fl">2.205</span>, <span class="dv">2</span>))</span></code></pre></div>
 <p>Now let’s use <code>case_when()</code> within <code>mutate()</code> to create a variable that shows whether an animal spends more time asleep than awake.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> mammal <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sleepy =</span> <span class="fu">case_when</span>(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    sleep_total <span class="sc">&gt;</span> awake <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    sleep_total <span class="sc">&lt;=</span> awake <span class="sc">~</span> <span class="cn">FALSE</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> mammal <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sleepy =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    sleep_total <span class="sc">&gt;</span> awake <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    sleep_total <span class="sc">&lt;=</span> awake <span class="sc">~</span> <span class="cn">FALSE</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
 <p><strong>On your own, create a variable containing the number of sleep cycles the animals experience each night (hint: divide the total amount of sleep by the length of the sleep cycle). Round to one decimal place and call the new variable <code>num_cycles</code></strong></p>
 <p>A syntax tip for case_when: use <code>TRUE ~ orig_variable_name</code> as a kind of “else” or “in all other cases”. So we could also use the following code to create <code>sleepy</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> mammal <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sleepy =</span> <span class="fu">case_when</span>(</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    sleep_total <span class="sc">&gt;</span> awake <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">FALSE</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="ot">&lt;-</span> mammal <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sleepy =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    sleep_total <span class="sc">&gt;</span> awake <span class="sc">~</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">FALSE</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code></pre></div>
 <p>Every value of a variable must be of the same type (i.e. character, numeric, integer, etc.) – be careful to only create values of the same type when using <code>case_when()</code> otherwise your mutate won’t work (especially with NA values). <code>as.numeric()</code>, <code>as.character()</code>, <code>as.integer()</code> are useful functions to coerce NA values (and others) to your desired variable type.</p>
 </div>
 <div id="exercise-5" class="section level3">
 <h3>Exercise 5</h3>
 <p><code>group_by()</code> can be very helpful if you want to answer questions about specific groups or categories of observations in the data.</p>
 <p>For example, we can use <code>group_by()</code> to determine how many animals spend more time asleep than awake.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sleepy) <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
-## # Groups:   sleepy [2]
-##   sleepy     n
-##   &lt;lgl&gt;  &lt;int&gt;
-## 1 FALSE     52
-## 2 TRUE      31</code></pre>
-<p>We can also use <code>summarize()</code> to calculate proportions, means, or other descriptions of our grouped data.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="sc">%&gt;%</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sleepy) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(mammal))</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
+<pre><code>## [38;5;246m# A tibble: 2 x 2[39m
+## [38;5;246m# Groups:   sleepy [2][39m
+##   sleepy     n
+##   [3m[38;5;246m&lt;lgl&gt;[39m[23m  [3m[38;5;246m&lt;int&gt;[39m[23m
+## [38;5;250m1[39m FALSE     52
+## [38;5;250m2[39m TRUE      31</code></pre>
+<p>We can also use <code>summarize()</code> to calculate proportions, means, or other descriptions of our grouped data.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mammal <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sleepy) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">prop =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="fu">nrow</span>(mammal))</span></code></pre></div>
+<pre><code>## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?</code></pre>
+<pre><code>## [38;5;246m# A tibble: 2 x 2[39m
 ##   sleepy  prop
-##   &lt;lgl&gt;  &lt;dbl&gt;
-## 1 FALSE  0.627
-## 2 TRUE   0.373</code></pre>
+##   [3m[38;5;246m&lt;lgl&gt;[39m[23m  [3m[38;5;246m&lt;dbl&gt;[39m[23m
+## [38;5;250m1[39m FALSE  0.627
+## [38;5;250m2[39m TRUE   0.373</code></pre>
 <p><strong>Use group_by() to determine the proportion of mammals in the data that are carnivores.</strong></p>
 </div>
 <div id="exercise-6" class="section level3">
@@ -433,14 +460,14 @@ code span.ot { color: #007020; }
 <p><code>ggplot2</code> is not the only package for making plots in R, but it’s a really good place to start.</p>
 <p>You can find a great ggplot2 cheatsheet <a href="https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">here.</a></p>
 <p>Let’s create a plot to look at how total sleep and REM sleep are related.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mammal, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> sleep_total, <span class="at">y =</span> sleep_rem, <span class="at">color =</span> sleepy)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;REM Sleep vs. Total Sleep in Mammals&quot;</span>,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;from msleep, a dataset of the ggplot2 package&quot;</span>,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Total Sleep (hrs)&quot;</span>,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;REM Sleep (hrs)&quot;</span>, </span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;More Time Asleep than Awake&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mammal, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> sleep_total, <span class="at">y =</span> sleep_rem, <span class="at">color =</span> sleepy)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;REM Sleep vs. Total Sleep in Mammals&quot;</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;from msleep, a dataset of the ggplot2 package&quot;</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Total Sleep (hrs)&quot;</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;REM Sleep (hrs)&quot;</span>, </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;More Time Asleep than Awake&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 22 rows containing missing values (geom_point).</code></pre>
 <p><img src="data:image/png;base64,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BNUVgqACBNUVgqACBNUVgqACBNUVgqACBNUVgqACBNUVgqACBNUVgqACBNUVgqACBNUVgqACBNUVgqACBG0mpPDoZo0QBBUgaCMhxYffa4QgqABBGwlB0E0g6FFDEHQTCHrcEPqgG1gj6PN3Lr/xrp9BUF0hCBrH7z+MP/vWp24GQXWFIGj87KcfBHMIqisEQeOnP/4n18S/Z3gMmkDQ+OmrDxNJaeJ1hiColfPZT/xVEoLqCkHQ+NnfIajeEAS1V/E08VpDEDSpQl+//GZ2IY+gukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVICgukIQVPDeY9AEggqoQXWFIKgAQXWFIKgAQZsIOT8/3zIEQQUI2kDI+XllQxF0AwjaQAiCbgZBjxiCoJtB0GOG0AfdCIK2MwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqKwRBBQiqK6Sfgs4GlvGK9RBUV0gPBb2/8mbOBic3cj0E1RXSP0Hvv3ObLy3MWBBUV0j/BN0AguoKQVABguoK6aeg91eTpCd6Kpt3A4LqCumnoNNhPDu9nQ1XrIegukJ6KWhSgS6uh3G0qgpFUF0hfRX0/mqMoG0I6aWgi+txdHJjGvplEFRXSC8FjeejwTCent2tWA9BdYX0U9A1IKiukF4KurielK6HoLpCeilocpFUuh6C6grppaDxbGX304KgukJ6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" /><!-- --></p>
 <p>You may need to filter out NAs before plotting – R does it automatically here.</p>
@@ -454,11 +481,11 @@ code span.ot { color: #007020; }
 </ul>
 <p>Notes on <code>theme()</code>: You can build highly cutomized plots by formatting the non-data elements with arguments within <code>theme()</code>. See <a href="https://ggplot2.tidyverse.org/reference/theme.html">this link</a> for a list of optional arguments. This is great for adding horizontal/vertical lines and other annotations to tell the story of your data.</p>
 <p>Now let’s create a boxplot – these are helpful for visualizing categorical variables.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mammal, <span class="fu">aes</span>(<span class="at">x =</span> vore, <span class="at">y =</span> sleep_rem)) <span class="sc">+</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;REM Sleep Across Mammalian Diets&quot;</span>, </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;REM Sleep (hrs)&quot;</span>,</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;-vore Classification&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mammal, <span class="fu">aes</span>(<span class="at">x =</span> vore, <span class="at">y =</span> sleep_rem)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;REM Sleep Across Mammalian Diets&quot;</span>, </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;REM Sleep (hrs)&quot;</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;-vore Classification&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 22 rows containing non-finite values (stat_boxplot).</code></pre>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>Note that we didn’t add a theme here – this is the default appearance for plots using ggplot2.</p>
@@ -473,14 +500,14 @@ code span.ot { color: #007020; }
 <p>In R, we define functions with this format:</p>
 <p>name_of_function &lt;- function(input1=DEFAULT_VALUE, input2) { what the function does will go in here!! }</p>
 <p>Let’s define a function to say hello.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>say_hello <span class="ot">&lt;-</span> <span class="cf">function</span>(lastname, firstname) {</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Hello &quot;</span>, firstname, <span class="st">&quot; &quot;</span>, lastname, <span class="st">&quot;!&quot;</span>))</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>say_hello <span class="ot">&lt;-</span> <span class="cf">function</span>(lastname, firstname) {</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Hello &quot;</span>, firstname, <span class="st">&quot; &quot;</span>, lastname, <span class="st">&quot;!&quot;</span>))</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><code>paste()</code> and <code>paste0()</code> can be used to concatenate strings and expressions: the former inserts a space between arguments and the latter does not.</p>
 <p>Let’s try writing a function to convert hours to minutes (this is something we could use on the time variables in our mammal data if we wanted).</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>()</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>When you find yourself writing the same code over and over again, it’s a good time to think about writing a function.</p>
 </div>
 <div id="conditionals-if-else-if-and-else" class="section level3">
@@ -493,15 +520,15 @@ code span.ot { color: #007020; }
 <p>} else {</p>
 <p>## code</p>
 <p>}</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is positive&quot;</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is negative&quot;</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is zero&quot;</span>)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;x is negative&quot;</code></pre>
 </div>
 </div>

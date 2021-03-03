@@ -1,8 +1,10 @@
 ---
 title: "Practice Exercises"
-author: "Lillian Clark"
-date: "3/2/2021"
-output: html_document
+author: "Chavez Cheong"
+date: "3/3/2021"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r install-packages, message = FALSE, warning = FALSE}

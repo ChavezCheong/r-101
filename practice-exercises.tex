@@ -1,0 +1,490 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Practice Exercises},
+            pdfauthor={Chavez Cheong},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Practice Exercises}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Chavez Cheong}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{3/3/2021}
+
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#install.packages("tidyverse")}
+\CommentTok{\#install.packages("dplyr")}
+\CommentTok{\#install.packages("ggplot2")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+Today we'll be using a dataset about mammalian sleep that comes built in
+to ggplot2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{msleep}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 83 x 11
+##    name  genus vore  order conservation sleep_total sleep_rem sleep_cycle
+##    <chr> <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl>
+##  1 Chee~ Acin~ carni Carn~ lc                  12.1      NA        NA    
+##  2 Owl ~ Aotus omni  Prim~ <NA>                17         1.8      NA    
+##  3 Moun~ Aplo~ herbi Rode~ nt                  14.4       2.4      NA    
+##  4 Grea~ Blar~ omni  Sori~ lc                  14.9       2.3       0.133
+##  5 Cow   Bos   herbi Arti~ domesticated         4         0.7       0.667
+##  6 Thre~ Brad~ herbi Pilo~ <NA>                14.4       2.2       0.767
+##  7 Nort~ Call~ carni Carn~ vu                   8.7       1.4       0.383
+##  8 Vesp~ Calo~ <NA>  Rode~ <NA>                 7        NA        NA    
+##  9 Dog   Canis carni Carn~ domesticated        10.1       2.9       0.333
+## 10 Roe ~ Capr~ herbi Arti~ lc                   3        NA        NA    
+## # ... with 73 more rows, and 3 more variables: awake <dbl>, brainwt <dbl>,
+## #   bodywt <dbl>
+\end{verbatim}
+
+You usually won't be working with data that's already built into R, so
+for practice we're going to read in the same \texttt{msleep} data as a
+CSV file.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"data/mammal{-}sleep.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exercise-1}{%
+\subsubsection{Exercise 1}\label{exercise-1}}
+
+\textbf{What are the dimensions of \texttt{mammal()}? How many rows and
+columns does it have?}
+
+Type \texttt{head(mammal)} in the Console window. What does this do? How
+about \texttt{tail(mammal)}?
+
+\hypertarget{exercise-2}{%
+\subsubsection{Exercise 2}\label{exercise-2}}
+
+Let's do some exploratory data analysis and look at summary statistics!
+
+You've learned the assignment operator, so it's time to introduce the
+piping operator \texttt{\%\textgreater{}\%}. This is used to pass the
+output of one line to the next, like in the example below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(order }\SpecialCharTok{==} \StringTok{"Primates"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(name, sleep\_total) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(sleep\_total)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 2
+##   name         sleep_total
+##   <chr>              <dbl>
+## 1 Owl monkey          17  
+## 2 Slow loris          11  
+## 3 Potto               11  
+## 4 Patas monkey        10.9
+## 5 Macaque             10.1
+\end{verbatim}
+
+\textbf{Try this on your own -- see if you can find the mammal of class
+Rodentia that spends the least time awake.}
+
+R can make logical comparisons like the one in \texttt{filter()} above.
+Use \texttt{!=} to mean `does not equal'. You can also use operators
+like \texttt{\textgreater{}} or \texttt{\textless{}=} to mean `is
+greater than' and `is less than or equal to'. Also \texttt{is.na()} and
+\texttt{!is.na()}. Remember to use \texttt{==} for equality, not
+\texttt{=}. Use \texttt{\textbar{}} as ``or'' and \texttt{\&} as ``and''
+for multiple conditions. (Also \texttt{\%in\%}!)
+
+\hypertarget{exercise-3}{%
+\subsubsection{Exercise 3}\label{exercise-3}}
+
+If you want to look at the contents of one column (or vector) in the
+data, you can subset a dataframe like so:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal}\SpecialCharTok{$}\NormalTok{sleep\_total}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 12.1 17.0 14.4 14.9  4.0 14.4  8.7  7.0 10.1  3.0  5.3  9.4 10.0 12.5
+## [15] 10.3  8.3  9.1 17.4  5.3 18.0  3.9 19.7  2.9  3.1 10.1 10.9 14.9 12.5
+## [29]  9.8  1.9  2.7  6.2  6.3  8.0  9.5  3.3 19.4 10.1 14.2 14.3 12.8 12.5
+## [43] 19.9 14.6 11.0  7.7 14.5  8.4  3.8  9.7 15.8 10.4 13.5  9.4 10.3 11.0
+## [57] 11.5 13.7  3.5  5.6 11.1 18.1  5.4 13.0  8.7  9.6  8.4 11.3 10.6 16.6
+## [71] 13.8 15.9 12.8  9.1  8.6 15.8  4.4 15.6  8.9  5.2  6.3 12.5  9.8
+\end{verbatim}
+
+\textbf{Try finding the average total amount of sleep of mammals in the
+data on your own.}
+
+The \texttt{summary()} function can provide good information.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(mammal)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      name              genus               vore          
+##  Length:83          Length:83          Length:83         
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##     order           conservation        sleep_total      sleep_rem    
+##  Length:83          Length:83          Min.   : 1.90   Min.   :0.100  
+##  Class :character   Class :character   1st Qu.: 7.85   1st Qu.:0.900  
+##  Mode  :character   Mode  :character   Median :10.10   Median :1.500  
+##                                        Mean   :10.43   Mean   :1.875  
+##                                        3rd Qu.:13.75   3rd Qu.:2.400  
+##                                        Max.   :19.90   Max.   :6.600  
+##                                                        NA's   :22     
+##   sleep_cycle         awake          brainwt            bodywt        
+##  Min.   :0.1167   Min.   : 4.10   Min.   :0.00014   Min.   :   0.005  
+##  1st Qu.:0.1833   1st Qu.:10.25   1st Qu.:0.00290   1st Qu.:   0.174  
+##  Median :0.3333   Median :13.90   Median :0.01240   Median :   1.670  
+##  Mean   :0.4396   Mean   :13.57   Mean   :0.28158   Mean   : 166.136  
+##  3rd Qu.:0.5792   3rd Qu.:16.15   3rd Qu.:0.12550   3rd Qu.:  41.750  
+##  Max.   :1.5000   Max.   :22.10   Max.   :5.71200   Max.   :6654.000  
+##  NA's   :51                       NA's   :27
+\end{verbatim}
+
+Does it make sense to use the summary function on the variable
+\texttt{order} in our data?
+
+Reminder: Now you've made a few more edits to your R Markdown files, try
+committing your changes!
+
+\hypertarget{exercise-4}{%
+\subsubsection{Exercise 4}\label{exercise-4}}
+
+The \texttt{mutate} function allows you to create new variables. Let's
+create a variable with body weight in pounds instead of kilograms.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal }\OtherTok{\textless{}{-}}\NormalTok{ mammal }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{bodywt\_lbs =} \FunctionTok{round}\NormalTok{(bodywt }\SpecialCharTok{*} \FloatTok{2.205}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Now let's use \texttt{case\_when()} within \texttt{mutate()} to create a
+variable that shows whether an animal spends more time asleep than
+awake.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal }\OtherTok{\textless{}{-}}\NormalTok{ mammal }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{sleepy =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    sleep\_total }\SpecialCharTok{\textgreater{}}\NormalTok{ awake }\SpecialCharTok{\textasciitilde{}} \ConstantTok{TRUE}\NormalTok{,}
+\NormalTok{    sleep\_total }\SpecialCharTok{\textless{}=}\NormalTok{ awake }\SpecialCharTok{\textasciitilde{}} \ConstantTok{FALSE}
+\NormalTok{  ))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{On your own, create a variable containing the number of sleep
+cycles the animals experience each night (hint: divide the total amount
+of sleep by the length of the sleep cycle). Round to one decimal place
+and call the new variable \texttt{num\_cycles}}
+
+A syntax tip for case\_when: use
+\texttt{TRUE\ \textasciitilde{}\ orig\_variable\_name} as a kind of
+``else'' or ``in all other cases''. So we could also use the following
+code to create \texttt{sleepy}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal }\OtherTok{\textless{}{-}}\NormalTok{ mammal }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{sleepy =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{    sleep\_total }\SpecialCharTok{\textgreater{}}\NormalTok{ awake }\SpecialCharTok{\textasciitilde{}} \ConstantTok{TRUE}\NormalTok{,}
+    \ConstantTok{TRUE} \SpecialCharTok{\textasciitilde{}} \ConstantTok{FALSE}
+\NormalTok{  ))}
+\end{Highlighting}
+\end{Shaded}
+
+Every value of a variable must be of the same type (i.e.~character,
+numeric, integer, etc.) -- be careful to only create values of the same
+type when using \texttt{case\_when()} otherwise your mutate won't work
+(especially with NA values). \texttt{as.numeric()},
+\texttt{as.character()}, \texttt{as.integer()} are useful functions to
+coerce NA values (and others) to your desired variable type.
+
+\hypertarget{exercise-5}{%
+\subsubsection{Exercise 5}\label{exercise-5}}
+
+\texttt{group\_by()} can be very helpful if you want to answer questions
+about specific groups or categories of observations in the data.
+
+For example, we can use \texttt{group\_by()} to determine how many
+animals spend more time asleep than awake.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(sleepy) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+## # Groups:   sleepy [2]
+##   sleepy     n
+##   <lgl>  <int>
+## 1 FALSE     52
+## 2 TRUE      31
+\end{verbatim}
+
+We can also use \texttt{summarize()} to calculate proportions, means, or
+other descriptions of our grouped data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mammal }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(sleepy) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{prop =} \FunctionTok{n}\NormalTok{()}\SpecialCharTok{/}\FunctionTok{nrow}\NormalTok{(mammal))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##   sleepy  prop
+##   <lgl>  <dbl>
+## 1 FALSE  0.627
+## 2 TRUE   0.373
+\end{verbatim}
+
+\textbf{Use group\_by() to determine the proportion of mammals in the
+data that are carnivores.}
+
+\hypertarget{exercise-6}{%
+\subsubsection{Exercise 6}\label{exercise-6}}
+
+\texttt{ggplot2} is not the only package for making plots in R, but it's
+a really good place to start.
+
+You can find a great ggplot2 cheatsheet
+\href{https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf}{here.}
+
+Let's create a plot to look at how total sleep and REM sleep are
+related.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mammal, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sleep\_total, }\AttributeTok{y =}\NormalTok{ sleep\_rem, }\AttributeTok{color =}\NormalTok{ sleepy)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"REM Sleep vs. Total Sleep in Mammals"}\NormalTok{,}
+       \AttributeTok{subtitle =} \StringTok{"from msleep, a dataset of the ggplot2 package"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Total Sleep (hrs)"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"REM Sleep (hrs)"}\NormalTok{, }
+       \AttributeTok{color =} \StringTok{"More Time Asleep than Awake"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 22 rows containing missing values (geom_point).
+\end{verbatim}
+
+\includegraphics{practice-exercises_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+You may need to filter out NAs before plotting -- R does it
+automatically here.
+
+\begin{itemize}
+\tightlist
+\item
+  data is always the first argument (can go over piping operator
+  exception)
+\item
+  within \texttt{aes()} (short for aesthetics), assign variables to the
+  x/y axes and other elements of the plot
+\item
+  use another layer to specify the kind of plot --
+  \texttt{geom\_point()}, \texttt{geom\_histogram()}, and
+  \texttt{geom\_boxplot()} are a few common examples
+\item
+  add a theme to manipulate the appearance of your plot --
+  \texttt{theme\_light()} and \texttt{theme\_classic()} are two of many
+  options
+\item
+  use \texttt{labs()} to add labels
+\item
+  tip: use \texttt{alpha()} for transparency on crowded scatterplots
+\end{itemize}
+
+Notes on \texttt{theme()}: You can build highly cutomized plots by
+formatting the non-data elements with arguments within \texttt{theme()}.
+See \href{https://ggplot2.tidyverse.org/reference/theme.html}{this link}
+for a list of optional arguments. This is great for adding
+horizontal/vertical lines and other annotations to tell the story of
+your data.
+
+Now let's create a boxplot -- these are helpful for visualizing
+categorical variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ mammal, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ vore, }\AttributeTok{y =}\NormalTok{ sleep\_rem)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"REM Sleep Across Mammalian Diets"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"REM Sleep (hrs)"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"{-}vore Classification"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 22 rows containing non-finite values (stat_boxplot).
+\end{verbatim}
+
+\includegraphics{practice-exercises_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+Note that we didn't add a theme here -- this is the default appearance
+for plots using ggplot2.
+
+\textbf{Now play with ggplot2 and the other skills you've learned to
+create a plot that interests you.}
+
+
+\end{document}
